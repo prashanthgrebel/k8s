@@ -11,8 +11,6 @@ spec:
     port: 810
     targetPort: 80
     protocol: TCP
-#  type: LoadBalancer
-#  loadBalancerIP: "192.168.1.109"
   selector:
     role: target-role
 
