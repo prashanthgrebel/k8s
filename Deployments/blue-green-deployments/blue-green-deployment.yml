@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-deployment-green
+  labels:
+    role: green
+spec:
+  
+  replicas: 2
+  selector:
+    matchLabels:
+      role: green
+  template:
+    metadata:
+      annotations:
+        kubernetes.io/change-cause: notes:v1.1.3
+      labels:
+        role: green
+    spec:
+      containers:
+      - name: notes-deployment-green
+        image: registry.prashanth.private:5000/notes:v1.1.4
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 800
+          containerPort: 810
+        volumeMounts:
+          - mountPath: /etc/hosts
+            name: hosts
+          - mountPath: /var/log/nginx
+            name: ngix-logs
+      volumes:
+        - name: hosts
+          hostPath:
+            path: /etc/hosts
+            
+        - name: ngix-logs
+          hostPath:
+            path: /var/log/nginx
+            #  serviceName: notes-deply-service
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-green-service
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 32000
+    port: 800
+    targetPort: 80
+    port: 810
+    targetPort: 80
+    protocol: TCP
+#  type: LoadBalancer
+#  loadBalancerIP: "192.168.1.109"
+  selector:
+    role: green
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notes-deply-ingress
+spec:
+  rules:
+  - host: www.prashanthgnotes.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: blue-green-service
+            port:
+              number: 800
+              number: 810
+  ingressClassName: nginx
