@@ -4,6 +4,7 @@ metadata:
   name: notes-deployment-target-role
   labels:
     role: target-role
+  namespace: notes-user-deploy
 spec:
   
   replicas: 2
@@ -18,7 +19,7 @@ spec:
         role: target-role
     spec:
       containers:
-      - name: notes-deployment-target-role
+      - name: notes-deployment-green
         image: registry.prashanth.private:5000/notes:ImageTAG
         imagePullPolicy: Always
         securityContext:
@@ -39,7 +40,3 @@ spec:
         - name: ngix-logs
           hostPath:
             path: /var/log/nginx
-            #  serviceName: notes-deply-service
-
-
-
