@@ -1,11 +1,11 @@
 # k8s
 
 
-1) Master Node:
-               Manage, plan, schedule, and monitor the nodes
+1) Master Node: Manage, plan, schedule, and monitor the nodes
 
-3) Worker Node:
-              Host application as a container
+2) Worker Node: Host application as a container
 
-5) Kubelet :
-             The kubelet is in charge of facilitating communication between the control plane and the node. The container runtime is in charge of pulling the relevant container image from a registry, unpacking containers, running them on the                 node, and communicating with the operating system kernel.
+3) ETCD Cluster: ETCD is a distributed reliable key-value store that is Simple, Secure & Fast
+
+4) Kube-scheduler: identifying  the right node to place a container,  based on node resources and capacity.
+
