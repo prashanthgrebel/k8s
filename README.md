@@ -6,13 +6,13 @@
 
 3) ETCD Cluster: ETCD is a distributed reliable key-value store that is Simple, Secure & Fast
 
-      1) ETCD - Commands (Optional)
+      1) ETCD - Commands 
 
-(Optional) Additional information about ETCDCTL Utility
+      (Optional) Additional information about ETCDCTL Utility
 
-ETCDCTL is the CLI tool used to interact with ETCD.
+        ETCDCTL is the CLI tool used to interact with ETCD.
 
-ETCDCTL can interact with ETCD Server using 2 API versions - Version 2 and Version 3.  By default its set to use Version 2. Each version has different sets of commands.
+      ETCDCTL can interact with ETCD Server using 2 API versions - Version 2 and Version 3.  By default its set to use Version 2. Each version has different sets of commands.
 
 For example ETCDCTL version 2 supports the following commands:
 
