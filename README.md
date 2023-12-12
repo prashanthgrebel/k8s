@@ -93,7 +93,7 @@ metadata:
   name: myapp-replicaset
   labels:
     app: myapp_r
-    type: front-end_R
+    type: front-end_r
 
 spec:
   template:
