@@ -111,6 +111,7 @@ spec:
     matchLabels:
       type: front-end_r
 ```
-
+* # Labels and Selector:-
+They are used to connect kubernetes services with a kubernetes pod. Labels are any key-value pairs that are used to identify that pod. The pod gets its label through the deployment which is like a blueprint for the pod before the pod is created. The Selector matches the label.
 
       
