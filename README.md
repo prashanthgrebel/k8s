@@ -67,3 +67,18 @@ So for the commands I showed in the previous video to work you must specify the 
 
 
 # POD :-
+      A Kubernetes pod is a collection of one or more Linux® containers, and is the smallest unit of a Kubernetes application
+      apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+
+spec: 
+  containers:
+    - name: nginx-myapp-pod
+      image: nginx
+
+      
