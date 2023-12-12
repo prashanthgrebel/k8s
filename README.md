@@ -54,7 +54,7 @@ So for the commands I showed in the previous video to work you must specify the 
 4) Kube-scheduler: identifying  the right node to place a container,  based on node resources and capacity.
 
 5) Kube-Controller Manager :
-     1) Node controller: Responsible for onboarding New nodes to cluster , handling situations when a node failure 
+     1) Node controller: Responsible for onboarding New nodes to cluster, handling situations when a node failure 
      2) Replication controller: Responsible for  a number of containers running all the time
   
 
@@ -66,8 +66,8 @@ So for the commands I showed in the previous video to work you must specify the 
 8) Kube-proxy: enables the communication between the worker nodes containers
 
 
-# POD :-
-      A Kubernetes pod is a collection of one or more Linux® containers, and is the smallest unit of a Kubernetes application
+# Pod :-
+   Kubernetes pod is a collection of one or more Linux® containers and is the smallest unit of a Kubernetes application
       
 ```
 apiVersion: v1
@@ -83,5 +83,34 @@ spec:
     - name: nginx-myapp-pod
       image: nginx
 ```
+# ReplicaSet :- 
+  A ReplicaSet (RS) is a Kubernetes object used to maintain a stable set of replicated pods running within a cluster at any given time. A Kubernetes pod is a cluster deployment unit that typically contains one or more containers.
+
+  ```
+  apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp_r
+    type: front-end_R
+
+spec:
+  template:
+    metadata:
+      name: myapp-replicaset
+      labels:
+        app: myapp_r
+        type: front-end_r
+    spec:
+      containers:
+      - name: nginx-myapp-replicaset
+        image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end_r
+```
+
 
       
