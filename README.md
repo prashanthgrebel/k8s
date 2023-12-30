@@ -121,3 +121,8 @@ A Kubernetes Deployment tells Kubernetes how to create or modify instances of th
    # * Features: 
   * Rolling Update:
         Rolling updates allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+  * Roll Back: 
+
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/7c9fb08a-86ef-40c6-9d7d-3dd20429a957)
+
+   
