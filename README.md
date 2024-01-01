@@ -125,7 +125,7 @@ A Kubernetes Deployment tells Kubernetes how to create or modify instances of th
 
 ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/7c9fb08a-86ef-40c6-9d7d-3dd20429a957)
 
-```
+
 * Create an NGINX Pod
 
 # kubectl run nginx --image=nginx
@@ -156,6 +156,52 @@ OR
 
 # kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml > nginx-deployment.yaml
 
+
+
+
 ```
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp_r
+    type: front-end_r
+
+spec:
+  template:
+    metadata:
+      name: myapp-replicaset
+      labels:
+        app: myapp_r
+        type: front-end_r
+    spec:
+      containers:
+      - name: nginx-myapp-replicaset
+        image: nginx
+  replicas: 4
+  selector:
+    matchLabels:
+      type: front-end_r
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deploy-service
+
+spec:
+  selector: 
+      type: front-end_r
+  type: NodePort
+  ports:
+    - nodePort: 30124
+      port: 80
+      targetPort: 80
+```
+
+
 
    
