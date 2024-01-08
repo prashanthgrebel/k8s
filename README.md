@@ -219,4 +219,33 @@ spec:
 # Scheduling: ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/b4d7f2b9-45c1-4228-a055-61766099cbb3)
 
 
+  # * Manual Scheduing: 
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manual-sche-deployment
+  labels:
+    app: manual-sche-deployment
+    type: manual-sche-deployment-frontend 
+spec:
+  template:
+    metadata:
+      name: manual-sche-deployment
+      labels:
+        app: manual-sche-deployment
+        type: manual-sche-deployment-frontend
+    spec:
+      containers:
+      -  name: manual-sche-deployment-frontend-app
+         image: nginx:latest
+      nodeName: 1-117kworker
+  replicas: 2
+  selector:
+    matchLabels:
+      type: manual-sche-deployment-frontend
+```
+      
+
    
