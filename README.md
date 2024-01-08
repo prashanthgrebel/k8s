@@ -113,10 +113,9 @@ spec:
 ```
 * # Labels and Selector:-
 They are used to connect kubernetes services with a kubernetes pod. Labels are any key-value pairs that are used to identify that pod. The pod gets its label through the deployment which is like a blueprint for the pod before the pod is created. The Selector matches the label.
-
-``` get pods that are connected with labels and selectors
- # kubectl get pod --selector type=manual-sche-deployment-frontend
-```
+ ==> get pods that are connected with labels and selectors
+ 
+``` # kubectl get pod --selector type=manual-sche-deployment-frontend```
  
 
 # Deployments: 
