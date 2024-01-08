@@ -114,6 +114,10 @@ spec:
 * # Labels and Selector:-
 They are used to connect kubernetes services with a kubernetes pod. Labels are any key-value pairs that are used to identify that pod. The pod gets its label through the deployment which is like a blueprint for the pod before the pod is created. The Selector matches the label.
 
+``` get pods that are connected with labels and selectors
+ # kubectl get pod --selector type=manual-sche-deployment-frontend
+```
+ 
 
 # Deployments: 
 A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary
