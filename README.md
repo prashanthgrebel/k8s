@@ -220,6 +220,8 @@ spec:
 
 
   # * Manual Scheduing: 
+  We can manually assign the PODs to nodes yourself. Without a scheduler the easiest way to schedule a POD is to simply set the nodeName field to the name of the node in your POD specification file while creating the POD. The POD then gets assigned to the specified node.
+  
 ```
 ---
 apiVersion: apps/v1
