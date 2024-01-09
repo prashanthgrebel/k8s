@@ -251,6 +251,39 @@ spec:
     matchLabels:
       type: manual-sche-deployment-frontend
 ```
-      
+  # * Node Selector: 
+  The nodeSelector allows a Pod to schedule only on nodes that have a label(s) identical to the label(s) in the nodeSelector. These are key-value pairs that can be defined within the PodSpec.
+
+  * Step: 1
+    1) Label the nodes
+    ``` # kubectl label nodes 1-117kworker size=Large ```
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-selector
+  labels:
+    app: node-selector-app
+    type: node-selector-app-frontend
+
+
+spec:
+  template:
+    metadata:
+      name: node-selector
+      labels:
+        app: node-selector-app
+        type: node-selector-app-frontend
+    spec:
+      nodeSelector:
+        size: Large
+      containers:
+      - name: node-selector-app-frontend
+        image: registry.prashanthgr.private:5000/nginx_custom:latest
+  replicas: 3
+  selector:
+    matchLabels:
+      type: node-selector-app-frontend
+```
 
    
