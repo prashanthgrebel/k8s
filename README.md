@@ -251,6 +251,9 @@ spec:
     matchLabels:
       type: manual-sche-deployment-frontend
 ```
+
+  # * Taints and tolerations: --Pending
+  
   # * Node Selector: 
   The nodeSelector allows a Pod to schedule only on nodes that have a label(s) identical to the label(s) in the nodeSelector. These are key-value pairs that can be defined within the PodSpec.
 
@@ -286,5 +289,6 @@ spec:
     matchLabels:
       type: node-selector-app-frontend
 ```
-
+ # * Node Affinity: --- Pending
+ 
    
