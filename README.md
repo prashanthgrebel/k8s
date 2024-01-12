@@ -293,3 +293,21 @@ spec:
  
  # * Resource Limits:    -- Pending
    Kubernetes defines limits as a maximum amount of a resource to be used by a container. This means that the container can never consume more than the memory amount or CPU amount indicated. resources: limits: cpu: 0.5 memory: 100Mi. 
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+  - name: app
+    image: registry.prashanthgr.private:5000/nginx_custom:latest
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+```
