@@ -291,7 +291,7 @@ spec:
 ```
  # * Node Affinity: --- Pending
  
- # * Resource Limits:    -- Pending
+ # * Resource Limits:-
    Kubernetes defines limits as a maximum amount of a resource to be used by a container. This means that the container can never consume more than the memory amount or CPU amount indicated. resources: limits: cpu: 0.5 memory: 100Mi. 
 ```
 ---
