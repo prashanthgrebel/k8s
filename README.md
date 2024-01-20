@@ -76,10 +76,12 @@ First Header  | Second Header
 Pod           | v1
 ReplicaSet    | apps/v1
 Deployment    | apps/v1
-
-
-
-
+StatefulSet   | apps/v1
+Service       | v1
+DaemonSet     | apps/v1
+Job           | batch/v1
+CronJob       | batch/v1
+ReplicationController | v1
 # Pod :-
    Kubernetes pod is a collection of one or more Linux® containers and is the smallest unit of a Kubernetes application
       
