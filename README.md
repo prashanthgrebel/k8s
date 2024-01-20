@@ -336,3 +336,31 @@ Some typical uses of a DaemonSet are:
  * running a cluster storage daemon on every node
  * running a logs collection daemon on every node
  * running a node monitoring daemon on every node
+
+```
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-app
+  labels:
+    name: daemonset-app
+    type: daemonset-app-frontend
+
+spec:
+  template:
+    metadata:
+      name: daemonset-app
+      labels:
+        name: daemonset-app
+        type: daemonset-app-frontend
+    spec:
+      containers:
+      - name: daemonset-app-fe
+        image: registry.prashanthgr.private:5000/nginx_custom:latest
+  selector:
+    matchLabels:
+      type: daemonset-app-frontend
+
+```
+
+
