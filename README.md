@@ -71,7 +71,7 @@ So for the commands I showed in the previous video to work you must specify the 
 
 # Kind and apiVersions of all components
 
-First Header  | Second Header
+Kind  | apiVersion
 ------------- | -------------
 Pod           | v1
 ReplicaSet    | apps/v1
