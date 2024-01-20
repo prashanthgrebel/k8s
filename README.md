@@ -69,6 +69,17 @@ So for the commands I showed in the previous video to work you must specify the 
 8) Kube-proxy: enables the communication between the worker nodes containers
 
 
+# Kind and apiVersions of all components
+
+First Header  | Second Header
+------------- | -------------
+Pod           | v1
+ReplicaSet    | apps/v1
+Deployment    | apps/v1
+
+
+
+
 # Pod :-
    Kubernetes pod is a collection of one or more Linux® containers and is the smallest unit of a Kubernetes application
       
