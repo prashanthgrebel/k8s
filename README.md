@@ -363,4 +363,5 @@ spec:
 
 ```
 
-
+# Static Pods:
+  Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Unlike Pods that are managed by the control plane (for example, a Deployment); instead, the kubelet watches each static Pod (and restarts it if it fails).
