@@ -1,5 +1,7 @@
   # k8s
 
+[Kubernetes-CKA-0100-Core-Concepts-1.pdf](https://github.com/prashanthgrebel/k8s/files/14151675/Kubernetes-CKA-0100-Core-Concepts-1.pdf)
+
 
    * Helm: https://phoenixnap.com/kb/install-helm
 
