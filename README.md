@@ -472,8 +472,20 @@ spec:
 
 
 # Application life cycle management:- 
+[Kubernetes-CKA-0400-Application-Lifecycle-Management-1.pdf](https://github.com/prashanthgrebel/k8s/files/14163119/Kubernetes-CKA-0400-Application-Lifecycle-Management-1.pdf)
 
+
+ 
 
 # * Rolling Updates and Rollbacks  - Deployments
 
    * Rollout and varsioning
+   ``` Summarize Commands
+> kubectl rollout status deployment/myapp-deployment
+> kubectl rollout history deployment/myapp-deployment
+> kubectl create –f deployment-definition.yml
+> kubectl get deployments
+> kubectl apply –f deployment-definition.yml
+> kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
+> kubectl rollout undo deployment/myapp-deployment```
+
