@@ -487,5 +487,10 @@ spec:
 > kubectl get deployments
 > kubectl apply –f deployment-definition.yml
 > kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
-> kubectl rollout undo deployment/myapp-deployment```
+> kubectl rollout undo deployment/myapp-deployment
+```
+# Commands and Arguments:- 
+
+
+
 
