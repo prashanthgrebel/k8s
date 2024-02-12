@@ -491,7 +491,6 @@ spec:
 ```
 # Commands and Arguments ConfigMaps and Secrets:-
 
-# * ConfigMap
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -512,7 +511,42 @@ data:
     maxclients 10000
     requirepass Rebel@9902
 ```
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: redisdev
+  labels:
+    tier: redisdev-db
+spec:
+  template:
+    metadata:
+      name: redisdev
+      labels:
+        tier: redisdev-db
+    spec:
+      containers:
+      - name: redisdev
+        image: redis
+        command: ["/bin/bash","-c"]
+        args:
+          - echo creating data dir '/var/lib/redis-data';
+            mkdir /var/lib/redis-data;
+            echo running redis server with port 6380;
+            redis-server /data/redis.conf;
+        volumeMounts:
+        - name: redis-conf
+          mountPath: "./data"
+      volumes: 
+      - name: redis-conf
+        configMap:
+          name: configmap-redisdev
 
+  replicas: 2
+  selector:
+    matchLabels: 
+      tier: redisdev-db
+```
 
 
 
