@@ -489,7 +489,30 @@ spec:
 > kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
 > kubectl rollout undo deployment/myapp-deployment
 ```
-# Commands and Arguments:- 
+# Commands and Arguments ConfigMaps and Secrets:-
+
+# * ConfigMap
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-redisdev
+
+data:
+  redis.conf: |
+    bind 0.0.0.0 
+    port 6380
+    pidfile /var/run/redis_6380.pid
+    logfile /var/log/redis.log
+    tcp-keepalive 0
+    loglevel notice
+    dbfilename dump.rdb
+    dir /var/lib/redis-data
+    maxmemory 1gb
+    maxclients 10000
+    requirepass Rebel@9902
+```
+
 
 
 
