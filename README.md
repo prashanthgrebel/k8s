@@ -638,5 +638,7 @@ data:
 ```
      kubectl uncordon <node name>
 ```
+
+== kubectl cordon <node name> -- allows you to mark a node as “unschedulable,” which means that — until told otherwise — the existing pods will continue to run, but no new ones will be created on that node
     
 
