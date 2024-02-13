@@ -578,9 +578,9 @@ kubectl create secret generic db-user-pass \
     --from-literal=password='S!B\*d$zDsb='
 ```
 
-Use source files
+ * Use source files
 
-  * Store the credentials in files:
+    Store the credentials in files:
 ```
     echo -n 'admin' > ./username.txt
     echo -n 'S!B\*d$zDsb=' > ./password.txt
