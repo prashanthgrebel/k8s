@@ -339,6 +339,8 @@ spec:
   # * Manual Scheduing: 
   We can manually assign the PODs to nodes yourself. Without a scheduler the easiest way to schedule a POD is to simply set the nodeName field to the name of the node in your POD specification file while creating the POD. The POD then gets assigned to the specified node.
   
+  
+[Kubernetes-CKA-0200-Scheduling-1.pdf](https://github.com/prashanthgrebel/k8s/files/14256914/Kubernetes-CKA-0200-Scheduling-1.pdf)
 ```
 ---
 apiVersion: apps/v1
