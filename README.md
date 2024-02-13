@@ -647,6 +647,14 @@ data:
   
   https://v1-27.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 
+# * Backup and Restore Methods :-
+  * 1. Backup resource configs
+     ```
+     kubectl get all --all-namespaces -o yaml > all-spaces-configs.yml
+     ```
+ * 2. 
+
+
    
     
 
