@@ -630,10 +630,11 @@ data:
 
   # * OS Upgrades
   1. Drain Node safely from the cluster so pods are moved to other nodes with an issue
-    ```
+
+```
      kubectl drain <node name>
     ```
-  2. After maintainance make node schedulable
+  3. After maintainance make node schedulable
      ```
      kubectl uncordon <node name>     
      ```
