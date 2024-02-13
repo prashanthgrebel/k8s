@@ -628,7 +628,7 @@ data:
 
 # Cluster Maintenance : --
 
-  # * OS Upgrades
+  # * Node Maintainance
   1. Drain Node safely from the cluster so pods are moved to other nodes with an issue
 
 ```
@@ -639,6 +639,14 @@ data:
      kubectl uncordon <node name>
 ```
 
-== kubectl cordon <node name> -- allows you to mark a node as “unschedulable,” which means that — until told otherwise — the existing pods will continue to run, but no new ones will be created on that node
+== ``` kubectl cordon <node name>``` -- allows you to mark a node as “unschedulable,” which means that — until told otherwise — the existing pods will continue to run, but no new ones will be created on that node
+
+ # * Cluster maintainance / upgrade clusters versions
+
+   Follow  official kubernetes docs
+  
+  https://v1-27.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
+   
     
 
