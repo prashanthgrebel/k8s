@@ -648,11 +648,39 @@ data:
   https://v1-27.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 
 # * Backup and Restore Methods :-
-  * 1. Backup resource configs
+  * 1. Backup resource configs.
      ```
      kubectl get all --all-namespaces -o yaml > all-spaces-configs.yml
      ```
- * 2. 
+  * 2. Backup-ETCD Cluster.
+       1. Built-in snapshot
+          ```
+          ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT snapshot save snapshot.db
+          ```
+          Verify the snapshot:
+          ```
+          ETCDCTL_API=3 etcdctl --write-out=table snapshot status snapshot.db
+          ```
+
+  * 3. Restoring an etcd cluster :
+        1. stop kubeapi service
+        ```
+        systemctl stop kube-apiserver
+        ```
+        2. Restore
+        ```
+        ETCDCTL_API=3 etcdctl --data-dir <data-dir-location> snapshot restore snapshot.db
+        ```
+        3. make changes in kube-apiserver manifest file of --data-dir with newly backedup dir
+        4. restart etcd server
+           ```
+           systemctl daemon-reload
+           systemctl restart etcd
+           ```
+        5. start kube-apiserver
+           ```
+           systemctl start kube-apiserver
+           ````
 
 
    
