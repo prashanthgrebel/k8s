@@ -633,10 +633,10 @@ data:
 
 ```
      kubectl drain <node name>
-    ```
-  3. After maintainance make node schedulable
-     ```
-     kubectl uncordon <node name>     
-     ```
+ ```
+ 2. After maintainance make node schedulable
+```
+     kubectl uncordon <node name>
+```
     
 
