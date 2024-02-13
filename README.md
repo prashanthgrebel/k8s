@@ -678,7 +678,7 @@ data:
         ETCDCTL_API=3 etcdctl --data-dir <data-dir-location> snapshot restore snapshot.db
         ```
 
-        3. make changes in kube-apiserver manifest file of --data-dir with newly backedup dir
+        3. make changes in etcd manifest file of etcd volume host path  with newly backedup dir
         4. restart etcd server
            ```
            systemctl daemon-reload
