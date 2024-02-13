@@ -599,6 +599,31 @@ kubectl create secret generic db-user-pass \
         --from-file=username=./username.txt \
         --from-file=password=./password.txt
 ```
+  # * Managing Secrets using Configuration File
+  1. Convert the strings to base64:
+     ```
+     echo -n 'admin' | base64
+     echo -n '1f2d1e2e67df' | base64
+     ```
+
+   The output is similar to:
+   ```
+    YWRtaW4=
+    MWYyZDFlMmU2N2Rm
+  ```
+   2. Create the manifest:
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+```
+  
  
     
 
