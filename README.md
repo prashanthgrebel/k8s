@@ -657,6 +657,12 @@ data:
           ```
           ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT snapshot save snapshot.db
           ```
+          OR Important
+        ```
+        ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
+          --cacert=<trusted-ca-file> --cert=<cert-file> --key=<key-file> \
+          snapshot save <backup-file-location>
+        ```
           Verify the snapshot:
           ```
           ETCDCTL_API=3 etcdctl --write-out=table snapshot status snapshot.db
@@ -671,12 +677,7 @@ data:
         ```
         ETCDCTL_API=3 etcdctl --data-dir <data-dir-location> snapshot restore snapshot.db
         ```
-        OR Important
-        ```
-        ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
-          --cacert=<trusted-ca-file> --cert=<cert-file> --key=<key-file> \
-          snapshot save <backup-file-location>
-        ```
+
         3. make changes in kube-apiserver manifest file of --data-dir with newly backedup dir
         4. restart etcd server
            ```
