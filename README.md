@@ -570,5 +570,35 @@ Having said that, there are other better ways of handling sensitive data like pa
 
 
 
+  # * Managing Secrets using kubectl
+  * Use raw data
+```
+kubectl create secret generic db-user-pass \
+    --from-literal=username=admin \
+    --from-literal=password='S!B\*d$zDsb='
+```
 
+Use source files
+
+  * Store the credentials in files:
+```
+    echo -n 'admin' > ./username.txt
+    echo -n 'S!B\*d$zDsb=' > ./password.txt
+```
+   The -n flag ensures that the generated files do not have an extra newline character at the end of the text. This is important because when kubectl reads a file and encodes the content into a base64 string, the extra newline character gets encoded too. You do not need to escape special characters in strings that you include in a file.
+
+   Pass the file paths in the kubectl command:
+```
+    kubectl create secret generic db-user-pass \
+        --from-file=./username.txt \
+        --from-file=./password.txt
+```
+   The default key name is the file name. You can optionally set the key name using --from-file=[key=]source. For example:
+```
+    kubectl create secret generic db-user-pass \
+        --from-file=username=./username.txt \
+        --from-file=password=./password.txt
+```
+ 
+    
 
