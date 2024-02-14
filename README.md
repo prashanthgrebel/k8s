@@ -730,5 +730,10 @@ Since our ETCD database is TLS-Enabled, the following options are mandatory:
 
   # Kubernetes security:- 
 
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/525bfc94-0f46-46d1-bd2f-cbf9d713f321)
+
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/44f39950-71f0-493c-815e-5cd901db8cc1)
+
+
   
 
