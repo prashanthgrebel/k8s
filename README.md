@@ -734,6 +734,7 @@ Since our ETCD database is TLS-Enabled, the following options are mandatory:
 
 ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/44f39950-71f0-493c-815e-5cd901db8cc1)
 
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/f90063a3-6ba6-4a3c-9149-a86df6e7bfce)
 
   
 
