@@ -738,7 +738,7 @@ Since our ETCD database is TLS-Enabled, the following options are mandatory:
 
   # * Authentication 
 
-     ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/c15a8d4c-5a0a-4657-b831-399a7078e958)
+   ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/c15a8d4c-5a0a-4657-b831-399a7078e958)
 
 
   
