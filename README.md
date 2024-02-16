@@ -726,6 +726,53 @@ Since our ETCD database is TLS-Enabled, the following options are mandatory:
 
 –key                  identify secure client using this TLS key file
 
+
+# Storage:= 
+
+
+# * Persistentvolume:
+  A persistent volume is a piece of storage in a cluster that an administrator has provisioned. It is a resource in the cluster, just as a node is a cluster resource. A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume.
+
+```
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-ngix
+  labels:
+    name: pv-ngix
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Mi
+  hostPath:
+    path: /tmp/pv-ngix
+
+  
+```
+* Persistent volume claim:-
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-ngix-claim
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 900Ki
+  selector:
+    matchLabels:
+       name: pv-ngix
+```
+
+
+
+
+
+
    
 
   # Kubernetes security:- 
