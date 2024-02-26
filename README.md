@@ -769,23 +769,15 @@ spec:
 ```
 
 
+# Networking
+
+* # Ingress
+
+  ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/3c19a476-fb93-43a4-8f6e-0166059cb3a1)
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/1a3c5409-0ef0-448c-894c-09aff8c89477)
 
 
 
-
-   
-
-  # Kubernetes security:- 
-
-![image](https://github.com/prashanthgrebel/k8s/assets/92351464/525bfc94-0f46-46d1-bd2f-cbf9d713f321)
-
-![image](https://github.com/prashanthgrebel/k8s/assets/92351464/44f39950-71f0-493c-815e-5cd901db8cc1)
-
-![image](https://github.com/prashanthgrebel/k8s/assets/92351464/f90063a3-6ba6-4a3c-9149-a86df6e7bfce)
-
-  # * Authentication 
-
-   ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/c15a8d4c-5a0a-4657-b831-399a7078e958)
 
 
   
