@@ -775,6 +775,7 @@ spec:
 
   ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/3c19a476-fb93-43a4-8f6e-0166059cb3a1)
 ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/1a3c5409-0ef0-448c-894c-09aff8c89477)
+![image](https://github.com/prashanthgrebel/k8s/assets/92351464/8aeed843-a5d7-4fd4-8ce0-d85289fb0576)
 
 
 
