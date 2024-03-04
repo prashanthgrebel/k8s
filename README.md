@@ -854,7 +854,29 @@ spec:
             port:
               number: 80
 ```
-
+* # 2. Url based routing
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notes
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: notes-fe-url
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kube-prashanthgr.com
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: lvm-service
+            port:
+              number: 80
+```
 
 
   
