@@ -894,9 +894,10 @@ rules:
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
 
-- apiGroups: ["apps/v1"] # "" indicates the core API group
+- apiGroups: ["apps"] # "" indicates the core API group
   resources: ["deployments"]
-  verbs: ["get", "watch", "list"]
+  verbs: ["get", "watch", "list","create"]
+
 
 ```
 2. Create Role binding
