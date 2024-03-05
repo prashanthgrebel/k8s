@@ -879,5 +879,46 @@ spec:
 ```
 
 
+# Security:
+
+* # Authentication: RBAC
+ 1. create a Role
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: developer-env
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+
+- apiGroups: ["apps/v1"] # "" indicates the core API group
+  resources: ["deployments"]
+  verbs: ["get", "watch", "list"]
+
+```
+2. Create Role binding
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer_bind
+  namespace: developer-env
+subjects:
+- kind: User
+  name: rebel # "name" is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role #this must be Role or ClusterRole
+  name: developer # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+```
+
+ 
+
+
+
   
 
