@@ -923,8 +923,7 @@ roleRef:
 
    kubectl auth can-i get  pod --as rebel -n developer-env
    
-  ```
- Imperative method
+  Imperative method
   ```
      kubectl create role developer-rs --verb=get,list,watch --resource=rs.apps -n  developer-env
      kubectl create rolebinding developer-rs-bind --role=developer-rs --user=user1 --user=user2 -n developer-env
