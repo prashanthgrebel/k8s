@@ -922,14 +922,14 @@ roleRef:
 3. Check access status
    
    ```
-   kubectl auth can-i <verbs> pod --as rebel -n developer-env
+   kubectl auth can-i <verbs> pod --as employee -n deployment-manager
 
-   kubectl auth can-i get  pod --as rebel -n developer-env
+   kubectl auth can-i get  pod --as employee -n deployment-manager
    
   Imperative method
   ```
-     kubectl create role developer-rs --verb=get,list,watch --resource=rs.apps -n  developer-env
-     kubectl create rolebinding developer-rs-bind --role=developer-rs --user=user1 --user=user2 -n developer-env
+     kubectl create role office --verb=get,list,watch --resource=rs.apps -n  deployment-manager
+     kubectl create rolebinding office_bind --role=office --user=employee--user=employee2 -n deployment-manager
   ```
 
     Remember to run the above commands on each controller node: master-1, and master-2.
