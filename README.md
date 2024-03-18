@@ -934,7 +934,19 @@ roleRef:
 
     Remember to run the above commands on each controller node: master-1, and master-2.
 
-4. Create Kubeconfig
+4. Create Certificates
+```
+{
+  kubectl create namespace office
+
+  openssl genrsa -out employee.key 2048
+  openssl req -new -key employee.key -out employee.csr
+  openssl x509 -req  -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out employee.crt -days 1000
+
+}
+```
+
+5. Create Kubeconfig
 ```
 {
   kubectl config set-cluster kubernetes \
