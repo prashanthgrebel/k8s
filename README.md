@@ -887,16 +887,17 @@ spec:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: developer
-  namespace: developer-env
+  name: office
+  namespace: deployment-manager
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
-  verbs: ["get", "watch", "list"]
+  verbs: ["get", "watch", "list", "create"]
 
 - apiGroups: ["apps"] # "" indicates the core API group
   resources: ["deployments"]
   verbs: ["get", "watch", "list","create"]
+
 
 
 ```
@@ -905,16 +906,17 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: developer_bind
-  namespace: developer-env
+  name: office_bind
+  namespace: deployment-manager
 subjects:
 - kind: User
-  name: rebel # "name" is case sensitive
+  name: employee # "name" is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole
-  name: developer # this must match the name of the Role or ClusterRole you wish to bind to
+  name: office # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
+
 ```
 
 3. Check access status
@@ -931,3 +933,32 @@ roleRef:
   ```
 
     Remember to run the above commands on each controller node: master-1, and master-2.
+
+4. Create Kubeconfig
+```
+{
+  kubectl config set-cluster kubernetes \
+    --namespace=deployment-manager \
+    --certificate-authority=/etc/kubernetes/pki/ca.crt \
+    --embed-certs=true \
+    --server=https://192.168.1.120:6443 \
+    --kubeconfig=developer.kubeconfig
+
+  kubectl config set-credentials employee\
+    --namespace=deployment-manager \
+    --client-certificate=/etc/kubernetes/RBAC/employee/employee.crt \
+    --client-key=/etc/kubernetes/RBAC/employee/employee.key \
+    --embed-certs=true \
+    --kubeconfig=developer.kubeconfig
+
+  kubectl config set-context employee-context \
+    --namespace=deployment-manager \
+    --cluster=kubernetes \
+    --user=employee \
+    --kubeconfig=developer.kubeconfig
+
+    kubectl config use-context employee-context --kubeconfig=developer.kubeconfig --namespace=deployment-manager --user=employee
+
+  
+}
+```
