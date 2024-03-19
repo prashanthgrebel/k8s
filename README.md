@@ -980,6 +980,6 @@ roleRef:
 }
 ```
 # Authentication: ClusterRoles
-ClusterRoles -  define permissions on cluster-scoped resources
+ClusterRoles -  define permissions on cluster-scoped resources, can also be used to define namespaced resources.
 ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/4afcb277-fa6f-4edc-827f-d6cf03106613)
 
