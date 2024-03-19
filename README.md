@@ -375,8 +375,10 @@ spec:
 
   * Step: 1
     1) Label the nodes
-    ``` # kubectl label nodes 1-117kworker size=Large ```
-    ``` # kubectl get nodes --show-labels ```
+```
+# kubectl label nodes 1-117kworker size=Large 
+# kubectl get nodes --show-labels
+```
 ```
 apiVersion: apps/v1
 kind: Deployment
