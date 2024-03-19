@@ -880,6 +880,8 @@ spec:
 
 
 # Security:
+[Kubernetes-CKA-0600-Security-1.pdf](https://github.com/prashanthgrebel/k8s/files/14643678/Kubernetes-CKA-0600-Security-1.pdf)
+
 
 * # Authentication: RBAC
  1. create a Role
