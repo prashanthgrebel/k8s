@@ -980,6 +980,6 @@ roleRef:
 }
 ```
 # Authentication: ClusterRoles
-ClusterRoles have several uses. You can use a ClusterRole to: define permissions on namespaced resources and be granted access within individual namespace(s) define permissions on namespaced resources and be granted access across all namespaces. define permissions on cluster-scoped resources
+ClusterRoles -  define permissions on cluster-scoped resources
 ![image](https://github.com/prashanthgrebel/k8s/assets/92351464/4afcb277-fa6f-4edc-827f-d6cf03106613)
 
