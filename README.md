@@ -884,6 +884,7 @@ spec:
 
 
 * # Authentication: RBAC
+  Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles
  1. create a Role
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -976,3 +977,5 @@ roleRef:
   
 }
 ```
+# Authentication: ClusterRoles
+ClusterRoles have several uses. You can use a ClusterRole to: define permissions on namespaced resources and be granted access within individual namespace(s) define permissions on namespaced resources and be granted access across all namespaces. define permissions on cluster-scoped resources
