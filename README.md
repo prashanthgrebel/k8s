@@ -923,6 +923,8 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ```
+```
+
 
 3. Check access status
    
@@ -994,6 +996,7 @@ rules:
   resources: ["nodes"]
   verbs: ["list", "get", "create", "delete"]
 ```
+
 2. Create ClusterRoleBinding
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1007,5 +1010,35 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: cluster-admindev
+  apiGroup: rbac.authorization.k8s.io
+```
+
+
+* ex: 1
+```
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+ name: storage-admin
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["list", "get", "create", "delete"]
+- apiGroups: [""]
+  resources: ["persistentvolumes","storageclasses"]
+  verbs: ["list", "get", "create", "delete"]
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: michelle-storage-admin
+subjects:
+- kind: User
+  name: michelle
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: storage-admin
   apiGroup: rbac.authorization.k8s.io
 ```
