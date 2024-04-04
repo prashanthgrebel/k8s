@@ -878,6 +878,88 @@ spec:
             name: lvm-service
             port:
               number: 80
+#
+```
+# Traffic Routing to diffrent namespaces:-
+
+1. Deploy App and service with same namespace
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lvm-notes
+  labels:
+    app: lvm
+  namespace: lvm-app
+
+spec:
+  template:
+    metadata:
+      name: lvm-notes
+      labels:
+        app: lvm
+        # type: front-end_lvm
+    spec:
+      containers:
+      - name: lvm-notes
+        image: registry.prashanthgr.private:5000/python_app-lvm:latest
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lvm
+      #type: front-end_lvm
+
+
+```
+2. create another service in default namespace and route as below:-
+```
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lvm-service
+  namespace: lvm-app
+
+spec:
+  selector:
+      app: lvm
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  type: ExternalName
+  externalName: lvm-service.lvm-app.svc.cluster.local
+```
+3. Create Ingress: 
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notes
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: "/lvm"
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
+
 ```
 
 
