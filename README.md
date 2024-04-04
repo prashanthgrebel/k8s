@@ -939,6 +939,8 @@ spec:
   type: ExternalName
   externalName: lvm-service.lvm-app.svc.cluster.local
 ```
+* Note:  externalName: \<service\>.\<namespace\>.svc.cluster.local
+
 3. Create Ingress: 
 ```
 apiVersion: networking.k8s.io/v1
