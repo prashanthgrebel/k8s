@@ -630,8 +630,8 @@ data:
  ## Vault External secret operator (ESO):
  1. enable path and write data
     ```
-    > vault secrets enable -path=data kv
-    >  vault kv put data/mysqlcred MYSQL_ROOT_PASSWORD=Pgr@1234577  MYSQL_USER=pgr  MYSQL_PASSWORD=Pgr@123412345
+    vault secrets enable -path=data kv
+    vault kv put data/mysqlcred MYSQL_ROOT_PASSWORD=Pgr@1234577  MYSQL_USER=pgr  MYSQL_PASSWORD=Pgr@123412345
     ```
 2. create vault  policy
    ```
@@ -643,8 +643,8 @@ data:
    ```
 3. configure ESO using helm
    ```
-   > helm repo add external-secrets https://charts.external-secrets.io
-   > helm repo update
+    helm repo add external-secrets https://charts.external-secrets.io
+    helm repo update
    ```
    ```
    helm install external-secrets \
@@ -657,9 +657,91 @@ data:
    ```
    kubectl create secret generic vault-token --from-literal=token=<vault login token>
    ```
-5.
-   
- 
+5. create ClusterSecretStore to access external vault server ``` ClusterSecretStore.yaml ```
+```
+\apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore #Kubernetes resource type
+metadata:
+  name: vault-backend #resource name
+spec:
+  provider:
+    vault: #specifies vault as the provider
+      server: "http://192.168.1.120:8200" #the address of your vault instance
+      path: "data" #path for accessing the secrets
+      version: "v1" #Vault API version
+      auth:
+        tokenSecretRef:
+          name: "vault-token" #Use a secret called vault-token
+          key: "token" #Use this key to access the vault token
+
+```
+6. create external secrets ``` ExternalSecret.yml ```
+```
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: mysql-external-secret
+spec:
+  refreshInterval: "15s" 
+  secretStoreRef: 
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: mysql-secret 
+    creationPolicy: Owner 
+  data: 
+    - secretKey: MYSQL_ROOT_PASSWORD 
+      remoteRef: 
+        key: data/mysqlcred 
+        property: MYSQL_ROOT_PASSWORD 
+    - secretKey:  MYSQL_USER
+      remoteRef:
+        key: data/mysqlcred
+        property:  MYSQL_USER
+    - secretKey:  MYSQL_PASSWORD
+      remoteRef:
+        key: data/mysqlcred
+        property:  MYSQL_PASSWORD
+
+```
+7. create mysql deployment to use the secrets from external vault
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD
+        ports:
+        - containerPort: 3306
+```
 
 # Cluster Maintenance : --
 
