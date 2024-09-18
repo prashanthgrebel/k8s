@@ -628,7 +628,7 @@ data:
   password: MWYyZDFlMmU2N2Rm
 ```
  ## Vault External secret operator (ESO):
- 1. enable path and write date 
+ 1. enable path and write data
     ```
     > vault secrets enable -path=data kv
     >  vault kv put data/mysqlcred MYSQL_ROOT_PASSWORD=Pgr@1234577  MYSQL_USER=pgr  MYSQL_PASSWORD=Pgr@123412345
@@ -641,6 +641,25 @@ data:
     }
     EOF
    ```
+3. configure ESO using helm
+   ```
+   > helm repo add external-secrets https://charts.external-secrets.io
+   > helm repo update
+   ```
+   ```
+   helm install external-secrets \
+    external-secrets/external-secrets \
+    -n external-secrets \
+    --create-namespace \
+    --set installCRDs=true
+   ```
+4. create vault token secret - (use vault login token)
+   ```
+   kubectl create secret generic vault-token --from-literal=token=<vault login token>
+   ```
+5.
+   
+ 
 
 # Cluster Maintenance : --
 
