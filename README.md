@@ -627,6 +627,20 @@ data:
   username: YWRtaW4=
   password: MWYyZDFlMmU2N2Rm
 ```
+ ## Vault External secret operator (ESO):
+ 1. enable path and write date 
+    ```
+    > vault secrets enable -path=data kv
+    >  vault kv put data/mysqlcred MYSQL_ROOT_PASSWORD=Pgr@1234577  MYSQL_USER=pgr  MYSQL_PASSWORD=Pgr@123412345
+    ```
+2. create vault  policy
+   ```
+   vault policy write external-secret-operator-policy -<<EOF
+    path "data/mysqlcred" {
+    capabilities = ["read"]
+    }
+    EOF
+   ```
 
 # Cluster Maintenance : --
 
